@@ -290,3 +290,25 @@ window.addEventListener('load', function() {
         alert('Erro ao enviar: ' + JSON.stringify(error));
       });
   });
+
+//   função modo dark
+
+  const checkbox = document.getElementById("theme-switch");
+    const html = document.documentElement;
+
+    // Carregar preferência salva
+    if (localStorage.getItem("theme") === "dark") {
+      checkbox.checked = true;
+      html.setAttribute("data-theme", "dark");
+    }
+
+    // Alternar tema
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        html.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+      }
+    });

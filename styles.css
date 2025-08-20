@@ -43,11 +43,22 @@
 
     /* Transições */
     --transition: all 0.3s ease;
+
+      /* botão style */
+  --toggle-light-bg: #ebebeb;
+  --toggle-dark-bg: #242424;
+  --sun-color: #ffffff;
+  --moon-color: #7e7e7e;
+  --knob-light: linear-gradient(180deg, #ffcc89, #d8860b);
+  --knob-dark: linear-gradient(180deg, #777, #3a3a3a);
+  --page-light: #ffffff;
+  --page-dark: #242424;
+
 }
 
 /* ===== Sobrescritas no modo escuro ===== */
-    [data-theme="dark"] {
-      --color-bg: #0f0f0f;
+    [data-theme="light"] {
+      --color-bg: #ffffff;
       --color-bg-alt: #1a1a1a;
       --color-text: #cccccc;
       --color-text-muted: #888888;
@@ -175,6 +186,78 @@ body {
       transform: translateY(-2px);
       box-shadow: 0 20px 40px rgba(255,68,68,.35);
     }
+
+    /* Botão */
+.theme-toggle {
+  position: fixed;
+  top: 5px;
+  right: 20px;
+  width: 70px;
+  height: 35px;
+  background: var(--toggle-light-bg);
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: inset 0px 3px 8px rgba(0,0,0,0.3),
+              inset 0px -3px 8px rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Knob */
+.theme-toggle::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 27px;
+  height: 27px;
+  background: var(--knob-light);
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Ícones */
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  transition: fill 0.3s, opacity 0.3s;
+}
+
+.theme-toggle .icon-sun {
+  fill: var(--sun-color);
+}
+
+.theme-toggle .icon-moon {
+  fill: var(--moon-color);
+}
+
+/* Ativado (dark mode) */
+#theme-switch:checked + .theme-toggle {
+  background: var(--toggle-dark-bg);
+}
+
+#theme-switch:checked + .theme-toggle::after {
+  left: calc(100% - 31px);
+  background: var(--knob-dark);
+}
+
+#theme-switch:checked + .theme-toggle .icon-sun {
+  fill: var(--moon-color);
+}
+
+#theme-switch:checked + .theme-toggle .icon-moon {
+  fill: var(--sun-color);
+}
+    /* escondendo o input */
+#theme-switch {
+  display: none;
+}
 
 /* Hero Section */
 .hero {
@@ -669,6 +752,22 @@ section {
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 2rem 0;
     }
+
+
+    .theme-toggle {
+  
+
+  background: var(--toggle-light-bg);
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: inset 0px 3px 8px rgba(0,0,0,0.3),
+              inset 0px -3px 8px rgba(255,255,255,0.3);
+  display: flex;
+  padding: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
 
     .nav-menu.active {
         left: 0;
