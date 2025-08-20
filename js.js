@@ -277,13 +277,13 @@ window.addEventListener('load', function() {
 });
 // EmailJS integration
 (function() {
-    emailjs.init("SEU_USER_ID"); // Pegue no site do EmailJS
+    emailjs.init("FrVDnWnm1-J8_yWem"); 
   })();
 
   document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    emailjs.sendForm('service_970v94s', 'SEU_TEMPLATE_ID', this)
+    emailjs.sendForm('service_970v94s', 'template_8wyt6ql', this)
       .then(function() {
         alert('Mensagem enviada com sucesso!');
       }, function(error) {
