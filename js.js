@@ -275,3 +275,18 @@ window.addEventListener('load', function() {
         }, index * 200);
     });
 });
+// EmailJS integration
+(function() {
+    emailjs.init("SEU_USER_ID"); // Pegue no site do EmailJS
+  })();
+
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    emailjs.sendForm('service_970v94s', 'SEU_TEMPLATE_ID', this)
+      .then(function() {
+        alert('Mensagem enviada com sucesso!');
+      }, function(error) {
+        alert('Erro ao enviar: ' + JSON.stringify(error));
+      });
+  });
